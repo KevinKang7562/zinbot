@@ -89,9 +89,5 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 브라우저: `http://localhost:8000`
 
-## 참고
 
-- LLM/임베딩 API 서버: `http://localhost:1234`
-- Qdrant API 서버: `http://localhost:6333`
-- 이미지 OCR은 `pytesseract`를 사용하므로 OS에 Tesseract 설치가 필요합니다.
 # zinbot
