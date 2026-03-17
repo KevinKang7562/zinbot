@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { apiUrl } from "../api";
 
 const TABS = {
   TEXT: "텍스트 직접 임베딩",
@@ -7,7 +8,7 @@ const TABS = {
 };
 
 async function loadEmbeddingList() {
-  const res = await fetch("/api/admin/embeddings");
+  const res = await fetch(apiUrl("/api/admin/embeddings"));
   if (!res.ok) throw new Error("임베딩 리스트 조회 실패");
   return res.json();
 }
@@ -44,7 +45,7 @@ export default function AdminPanel({ open, onClose, onEmbedded, refreshToken }) 
     setStatus("");
     try {
       const metadata = JSON.parse(textForm.metadata || "{}");
-      const res = await fetch("/api/admin/embed/text", {
+      const res = await fetch(apiUrl("/api/admin/embed/text"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -78,7 +79,7 @@ export default function AdminPanel({ open, onClose, onEmbedded, refreshToken }) 
       formData.append("metadata_json", fileForm.metadata || "{}");
       formData.append("file", fileForm.file);
 
-      const res = await fetch("/api/admin/embed/file", {
+      const res = await fetch(apiUrl("/api/admin/embed/file"), {
         method: "POST",
         body: formData,
       });

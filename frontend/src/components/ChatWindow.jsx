@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { apiUrl } from "../api";
 
 async function postChat(message) {
-  const res = await fetch("/api/chat", {
+  const res = await fetch(apiUrl("/api/chat"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message }),
