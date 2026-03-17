@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     llm_api_base: str = Field(default="http://localhost:1234", alias="LLM_API_BASE")
     llm_chat_api_url: str = Field(
-        default="https://router.huggingface.co/v1/chat/completions",
+        default="https://openrouter.ai/api/v1/chat/completions",
         alias="LLM_CHAT_API_URL",
     )
     llm_api_key: str = Field(
@@ -21,7 +21,7 @@ class Settings(BaseSettings):
         alias="LLM_API_KEY",
     )
     embedding_api_url: str = Field(
-        default="https://router.huggingface.co/hf-inference/models/intfloat/multilingual-e5-large",
+        default="https://openrouter.ai/api/v1/embeddings",
         alias="EMBEDDING_API_URL",
     )
     embedding_api_key: str = Field(

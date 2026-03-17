@@ -32,8 +32,8 @@ class LLMClient:
         prefix = "query: " if is_query else "passage: "
         normalized_text = normalize_text(text)
         payload: dict[str, Any] = {
-            "inputs": f"{prefix}{normalized_text}",
-            "normalize": True,
+            "model": settings.embedding_model,
+            "input": [f"{prefix}{normalized_text}"],
         }
         headers = {"Authorization": f"Bearer {settings.embedding_api_key}"}
         async with httpx.AsyncClient(timeout=60) as client:
@@ -44,7 +44,7 @@ class LLMClient:
             )
             response.raise_for_status()
             data = response.json()
-        return self._coerce_embedding_vector(data)
+        return self._coerce_embedding_vector(data["data"][0]["embedding"])
 
     async def chat(self, messages: list[dict[str, str]], temperature: float = 0.2) -> str:
         payload: dict[str, Any] = {
