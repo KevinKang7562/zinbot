@@ -1,0 +1,17 @@
+아래 순서대로 실행하면 됩니다.
+
+프론트 의존성 설치
+cd e:\dev\react\zinbot\frontend
+npm install
+프론트 개발 서버 실행
+npm run dev
+백엔드 실행(별도 터미널)
+cd e:\dev\react\zinbot\backend
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+접속 주소:
+
+프론트: http://localhost:5173
+통합 API 백엔드: http://localhost:8000
