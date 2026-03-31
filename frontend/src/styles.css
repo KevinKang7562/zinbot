@@ -133,6 +133,16 @@ body {
   white-space: pre-wrap;
 }
 
+.inline-link {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.inline-link:hover {
+  color: #c55f37;
+}
+
 .reference-section {
   margin-top: 14px;
   padding-top: 12px;
@@ -177,6 +187,14 @@ body {
   overflow-wrap: break-word;
   line-break: auto;
   line-height: 1.55;
+}
+
+.reference-paragraph {
+  margin: 0;
+}
+
+.reference-paragraph + .reference-paragraph {
+  margin-top: 10px;
 }
 
 .composer {
